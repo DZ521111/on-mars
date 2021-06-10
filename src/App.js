@@ -4,8 +4,18 @@ import Header from "./my_components/Header";
 import { Todos } from "./my_components/Todos";
 import { Footer } from "./my_components/Footer";
 import { AddTodo } from "./my_components/AddTodo";
+import { About } from "./my_components/About";
 // import { Todo } from "./my_components/Todo";
 import React, { useEffect, useState } from "react";
+// for routing purposes only
+// import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link
+} from "react-router-dom";
+
 
 function App() {
   let initTodo;
@@ -55,10 +65,21 @@ function App() {
 
   return (
     <>
-      <Header title="My-Milky-Way-List" searchBar={true} />
-      <AddTodo addTodo={addTodo} />
-      <Todos todos={todos} onDelete={onDelete} />
-      <Footer />
+      <Router>
+        <Header title="My-Milky-Way-List" searchBar={true} />
+        <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/" render={() => {
+            return (<><AddTodo addTodo={addTodo} />
+              <Todos todos={todos} onDelete={onDelete} />
+            </>)
+          }}>
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 }
