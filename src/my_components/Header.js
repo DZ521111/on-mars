@@ -1,11 +1,13 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
-export default function Header() {
+
+export default function Header(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                    First-App
+                    {props.title}
                 </a>
                 <button
                     className="navbar-toggler"
@@ -31,14 +33,27 @@ export default function Header() {
                             </a>
                         </li>
                     </ul>
-                    <form className="d-flex">
+                    { props.searchBar ? <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Find" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">
                             Search
                         </button>
-                    </form>
+                    </form> : "searchBar boolean is {false}"}
                 </div>
             </div>
         </nav>
     );
+}
+
+// DefaultProps used for provide default value to component props
+Header.defaultProps = {
+    title: "Default-Title",
+    searchBar: true
+}
+
+// for robustness of variables or objects props (not necessary but do it)
+Header.propTypes = {
+    title: PropTypes.string,
+    searchBar: PropTypes.bool.isRequired    // isRequired used for when you user didn't provide value from parent component or didn't mentioned
+                                            // in defaultProps then it will shows the error.
 }

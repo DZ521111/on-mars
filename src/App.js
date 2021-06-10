@@ -8,7 +8,7 @@ import { Todo } from "./my_components/Todo";
 function App() {
   return (
     <>
-      <Header />
+      <Header title = "My-Milky-List" searchBar = {true}/>
       <Todos>
         <Todo />
       </Todos>
