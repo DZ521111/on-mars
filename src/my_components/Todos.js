@@ -14,7 +14,7 @@ export const Todos = (props) => {
             {props.todos.length === 0 ? "No planet work to display!" :
                 props.todos.map((todo) => {
                     // console.log(props.todos.length)
-                    return (<><Todo todo={todo} key={todo.toNo} onDelete={props.onDelete} /><hr/></>)
+                    return (<Todo todo={todo} key={todo.toNo} onDelete={props.onDelete} />)
                 })}
         </div>
     )
