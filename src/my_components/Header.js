@@ -1,8 +1,15 @@
 import React from "react";
-import PropTypes from 'prop-types'
-
+import PropTypes from "prop-types";
 
 export default function Header(props) {
+    // add style to header
+    // let headerStyle = {
+    //     position: "fixed",
+    //     top: "0px",
+    //     width: "100%",
+    //     border: "1px solid red"
+    // }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -33,12 +40,16 @@ export default function Header(props) {
                             </a>
                         </li>
                     </ul>
-                    { props.searchBar ? <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Find" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">
-                            Search
-                        </button>
-                    </form> : "searchBar boolean is {false}"}
+                    {props.searchBar ? (
+                        <form className="d-flex">
+                            <input className="form-control me-2" type="search" placeholder="search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="submit">
+                                Search
+                            </button>
+                        </form>
+                    ) : (
+                        "searchBar boolean is {false}"
+                    )}
                 </div>
             </div>
         </nav>
@@ -48,12 +59,12 @@ export default function Header(props) {
 // DefaultProps used for provide default value to component props
 Header.defaultProps = {
     title: "Default-Title",
-    searchBar: true
-}
+    searchBar: true,
+};
 
 // for robustness of variables or objects props (not necessary but do it)
 Header.propTypes = {
     title: PropTypes.string,
-    searchBar: PropTypes.bool.isRequired    // isRequired used for when you user didn't provide value from parent component or didn't mentioned
-                                            // in defaultProps then it will shows the error.
-}
+    searchBar: PropTypes.bool.isRequired, // isRequired used for when you user didn't provide value from parent component or didn't mentioned
+    // in defaultProps then it will shows the error.
+};
